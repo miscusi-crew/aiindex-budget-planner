@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Budget Planner</title>
+<link rel="icon" href="icon.svg">
+<link rel="stylesheet" href="base.css">
+<style>
+  main{max-width:48rem}
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:.75rem}
+  @media (max-width:42rem){.cols{grid-template-columns:1fr}}
+  h2{font-size:1rem;margin:0 0 .4rem;display:flex;justify-content:space-between}
+  .item{display:grid;grid-template-columns:1fr 7rem auto;gap:.35rem;margin-bottom:.35rem}
+  .item input{min-width:0}
+  .item input.amt{text-align:right;font-variant-numeric:tabular-nums}
+  .del{border:0;background:transparent;color:var(--muted)}
+  .left{font-size:2rem;font-weight:800;margin:1rem 0 .25rem;font-variant-numeric:tabular-nums}
+  .left.neg{color:var(--bad)}.left.pos{color:var(--good)}
+  .bars{display:grid;gap:.3rem;margin-top:.5rem}
+  .bar{display:grid;grid-template-columns:8rem 1fr 4rem;gap:.5rem;align-items:center;font-size:.85rem}
+  .bar .track{height:.6rem;background:var(--line);border-radius:1rem;overflow:hidden}
+  .bar .fill{height:100%;background:var(--accent)}
+  .bar .pct{text-align:right;color:var(--muted);font-variant-numeric:tabular-nums}
+</style>
+</head>
+<body>
+<main>
+  <h1>Budget Planner</h1>
+  <p class="sub">List what comes in and goes out each month. Saved in this browser.</p>
+  <div class="cols">
+    <section><h2>Income <span id="inc-total"></span></h2><div id="income"></div><button data-add="income">+ Add income</button></section>
+    <section><h2>Expenses <span id="exp-total"></span></h2><div id="expenses"></div><button data-add="expenses">+ Add expense</button></section>
+  </div>
+  <p class="left" id="left" aria-live="polite"></p>
+  <p class="sub" id="left-label"></p>
+  <h2>Where the money goes</h2>
+  <div class="bars" id="bars"></div>
+</main>
+<script src="app.js"></script>
+</body>
+</html>
